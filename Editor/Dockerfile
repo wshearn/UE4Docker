@@ -14,6 +14,9 @@ RUN apt-get install -y mono-complete mono-dmcs
 # clang and deps
 RUN apt-get install -y autoconf git curl bison flex zlib1g-dev libglew1.6-dev dos2unix clang-3.3 cmake
 
+# For Linux Native Dialogs
+RUN apt-get install -y libgtk-3-dev
+
 ADD build.sh /root/build.sh
 
 ENV HOME /root
