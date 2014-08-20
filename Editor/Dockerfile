@@ -17,6 +17,9 @@ RUN apt-get install -y autoconf git curl bison flex zlib1g-dev libglew1.6-dev do
 # For Linux Native Dialogs
 RUN apt-get install -y libgtk-3-dev
 
+# Required to extract steamworks SDK
+RUN apt-get install -y unzip
+
 ADD build.sh /root/build.sh
 
 ENV HOME /root
