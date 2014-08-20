@@ -11,7 +11,7 @@ Prep:
  - Install Docker ([ArchLinux], [Fedora], [Ubuntu])
  - mkdir -p $HOME/Projects/UnrealEngine/Deps
  - cd $HOME/Projects/UnrealEngine
- - git clone git@github.com:3dluvr/UnrealEngine.git Source
+ - git clone -b 4.4-linux git@github.com:3dluvr/UnrealEngine.git Source
  - Download the required deps from [here] and move them into $HOME/Projects/Deps
 
 To Build UnrealEngine:
@@ -23,4 +23,4 @@ You should see the resulting binaries in $HOME/Projects/UnrealEngine/Source/Engi
 [ArchLinux]: https://wiki.archlinux.org/index.php/Docker
 [Fedora]: http://docs.docker.com/installation/fedora/
 [Ubuntu]: http://docs.docker.com/installation/ubuntulinux/
-[here]: https://github.com/3dluvr/UnrealEngine/releases
+[here]: https://github.com/3dluvr/UnrealEngine/releases/tag/4.4.0-release
