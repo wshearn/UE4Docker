@@ -15,8 +15,8 @@ Prep:
  - Download the required deps from [here] and move them into $HOME/Projects/Deps
 
 To Build UnrealEngine:
- - docker pull wshearn/ue4docker
- - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -v $HOME/Projects/UnrealEngine/Deps:/root/Download wshearn/ue4docker
+ - docker pull wshearn/ue4editor
+ - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -v $HOME/Projects/UnrealEngine/Deps:/root/Download wshearn/ue4editor
 
 You should see the resulting binaries in $HOME/Projects/UnrealEngine/Source/Engine/Binaries/Linux/
 

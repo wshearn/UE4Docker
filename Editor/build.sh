@@ -16,10 +16,6 @@ PrepWork() {
     popd
 }
 
-SlateViewer() {
-    make SlateViewer
-}
-
 UE4Editor() {
     make ShaderCompileWorker
     make UnrealLightmass
@@ -27,6 +23,10 @@ UE4Editor() {
     make UE4Editor
 }
 
-PrepWork
-SlateViewer
+DEPFILE=$UEPATH/Engine/Build/BatchFiles/Linux/dependencies
+
+if [ ! -f ${DEPFILE}.installed ] || [ "$(diff $DEPFILE.txt $DEPFILE.installed >/dev/null 2>&1)" != "0" ] ; then
+    PrepWork
+fi
+
 UE4Editor
