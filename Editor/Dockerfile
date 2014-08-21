@@ -1,4 +1,4 @@
-# Imreal Engine 4 Build container
+# Unreal Engine 4 Build container
 #
 # VERSION               0.0.1
 
@@ -20,7 +20,9 @@ RUN apt-get install -y libgtk-3-dev
 # Required to extract steamworks SDK
 RUN apt-get install -y unzip
 
-ADD build.sh /root/build.sh
+ADD ../build.sh /root/build.sh
+
+ENV BUILD Editor
 
 ENV HOME /root
 

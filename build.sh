@@ -1,6 +1,7 @@
 #!/bin/bash
 
 UEPATH=/root/UnrealEngine
+DEPFILE=$UEPATH/Engine/Build/BatchFiles/Linux/dependencies
 
 cd $UEPATH
 
@@ -23,14 +24,34 @@ UE4Editor() {
     make UE4Editor
 }
 
-DEPFILE=$UEPATH/Engine/Build/BatchFiles/Linux/dependencies
+UE4Server() {
+    make UE4Server
+}
+
+UE4Game() {
+    make UE4Game
+}
+
+Build() {
+    if [ "$BUILD" == "Server" ]; then
+        UE4Server
+    elif [ "$BUILD" == "Editor" ]; then
+        UE4Editor
+    elif [ "$BUILD" == "Game" ]; then
+        UE4Game
+    else
+        echo "=========== BUILD is not set, defaulting to Editor ==========="
+        echo "This is normally set in the Dockerfile"
+        UE4Editor
+    fi
+}
 
 if [ ! -f ${DEPFILE}.installed ] || [ "$(diff $DEPFILE.txt $DEPFILE.installed >/dev/null 2>&1)" != "0" ] ; then
     PrepWork
 fi
 
 if [ "x$MAKE" == "x" ] ; then
-    UE4Editor
+    Build
 else
     make ${MAKE}
 fi
