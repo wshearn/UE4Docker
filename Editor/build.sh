@@ -29,4 +29,12 @@ if [ ! -f ${DEPFILE}.installed ] || [ "$(diff $DEPFILE.txt $DEPFILE.installed >/
     PrepWork
 fi
 
-UE4Editor
+if [ "x$MAKE" == "x" ] ; then
+    UE4Editor
+else
+    make ${MAKE}
+fi
+
+# Get the UID:GID from GenerateProjectFiles.sh and reset all the permissions to match
+# Otherwise we get a segfault due to the editor not being able to access Saved or Intermediate
+chown -R $(ls -l GenerateProjectFiles.sh  | awk '{ print $3":"$4 }') *
