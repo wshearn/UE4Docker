@@ -5,18 +5,29 @@ This is a docker image for simplifying building the UnrealEngine 4 on Linux
 
 It is based on Ubuntu 14.04 with all the deps needed to build included.
 
-How to run:
+## How to run
 
-Prep:
+### Prep
+
  - Install Docker ([ArchLinux], [Fedora], [Ubuntu])
  - mkdir -p $HOME/Projects/UnrealEngine/Deps
  - cd $HOME/Projects/UnrealEngine
  - git clone -b 4.4-linux git@github.com:3dluvr/UnrealEngine.git Source
  - Download the required deps from [here] and move them into $HOME/Projects/Deps
 
-To Build UnrealEngine:
+### To Build UnrealEngine
+
  - docker pull wshearn/ue4editor
- - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -v $HOME/Projects/UnrealEngine/Deps:/root/Download wshearn/ue4editor
+ - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -v $HOME/Projects/UnrealEngine/Deps:/root/Downloads wshearn/ue4editor
+
+You should see the resulting binaries in $HOME/Projects/UnrealEngine/Source/Engine/Binaries/Linux/
+
+### To Build UnrealEngine (Debug Build)
+
+The debug build is useful for diagnosing issues.
+
+ - docker pull wshearn/ue4editor
+ - docker run -e "DEBUG=1" -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -v $HOME/Projects/UnrealEngine/Deps:/root/Downloads wshearn/ue4editor
 
 You should see the resulting binaries in $HOME/Projects/UnrealEngine/Source/Engine/Binaries/Linux/
 

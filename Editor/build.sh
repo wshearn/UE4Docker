@@ -20,7 +20,11 @@ UE4Editor() {
     make ShaderCompileWorker
     make UnrealLightmass
     make UnrealPak
-    make UE4Editor
+    if [ -z $DEBUG ] ; then
+        make UE4Editor
+    else
+        make UE4Editor-Linux-Debug
+    fi
 }
 
 DEPFILE=$UEPATH/Engine/Build/BatchFiles/Linux/dependencies
