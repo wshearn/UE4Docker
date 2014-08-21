@@ -1,6 +1,6 @@
-# Imreal Engine 4 Build container
+# Unreal Engine 4 Build container
 #
-# VERSION               0.0.1
+# VERSION               4.4.0
 
 FROM      ubuntu:14.04
 MAINTAINER Wesley Hearn <wesley@shearn.me>
