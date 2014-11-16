@@ -1,24 +1,23 @@
 # Unreal Engine 4 Build container
 #
-# VERSION               0.0.1
+# VERSION               4.5.0
 
-FROM      ubuntu:14.04
+FROM      centos:centos7
 MAINTAINER Wesley Hearn <wesley@shearn.me>
 
-RUN apt-get update
-RUN apt-get -y dist-upgrade
+# Make sure we are fully updated
+RUN yum update -y
 
-# Mono
-RUN apt-get install -y mono-complete mono-dmcs
+# Install EPEL (for MONO)
+RUN yum install -y wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 
-# clang and deps
-RUN apt-get install -y autoconf git curl bison flex zlib1g-dev libglew1.6-dev dos2unix clang-3.3 cmake
+# Needed Deps
+RUN yum install -y mono-core mono-devel autoconf git curl bison flex dos2unix cmake unzip redhat-lsb-core
 
-# For Linux Native Dialogs
-RUN apt-get install -y libgtk-3-dev
-
-# Required to extract steamworks SDK
-RUN apt-get install -y unzip
+RUN wget -c http://llvm.org/releases/3.5.0/clang+llvm-3.5.0-x86_64-fedora20.tar.xz && \
+  tar -mpxvf --strip-components 1 clang+llvm-3.5.0-x86_64-fedora20.tar.xz -C /usr/local/ clang+llvm-3.5.0-x86_64-fedora20/ && \
+  restorecon -Rvv /usr/local && \
+  rm -f clang+llvm-3.5.0-x86_64-fedora20.tar.xz
 
 ADD ../build.sh /root/build.sh
 
