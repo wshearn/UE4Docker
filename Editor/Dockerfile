@@ -8,15 +8,11 @@ MAINTAINER Wesley Hearn <wesley@shearn.me>
 # Make sure we are fully updated
 RUN yum update -y
 
-# Install EPEL (for MONO)
-RUN yum install -y wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
-
 # Needed Deps
-RUN yum install -y mono-core mono-devel autoconf git curl bison flex dos2unix cmake unzip redhat-lsb-core
+RUN yum install -y autoconf git curl bison flex dos2unix cmake unzip redhat-lsb-core wget ; yum clean all
 
-RUN wget -c http://llvm.org/releases/3.5.0/clang+llvm-3.5.0-x86_64-fedora20.tar.xz && \
-  tar --strip-components 1 -mpxvf clang+llvm-3.5.0-x86_64-fedora20.tar.xz -C /usr/local/ clang+llvm-3.5.0-x86_64-fedora20/ && \
-  rm -f clang+llvm-3.5.0-x86_64-fedora20.tar.xz
+RUN wget https://copr.fedoraproject.org/coprs/jknife/ue4deps/repo/epel-7/jknife-ue4deps-epel-7.repo -o /etc/yum.repos.d/jknife-ue4deps-epel-7.repo && \
+  yum install -y mono-core mono-devel clang ; yum clean all
 
 ADD build.sh /root/build.sh
 
