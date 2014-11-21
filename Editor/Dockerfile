@@ -1,27 +1,25 @@
 # Unreal Engine 4 Build container
 #
-# VERSION               4.4.0
+# VERSION               4.5.0
 
-FROM      ubuntu:14.04
+FROM      centos:centos7
 MAINTAINER Wesley Hearn <wesley@shearn.me>
 
-RUN apt-get update
-RUN apt-get -y dist-upgrade
+# Make sure we are fully updated
+RUN yum update -y
 
-# Mono
-RUN apt-get install -y mono-complete mono-dmcs
+# Needed Deps
+RUN yum install -y autoconf git curl bison flex dos2unix cmake unzip \
+    redhat-lsb-core wget ; yum clean all
 
-# clang and deps
-RUN apt-get install -y autoconf git curl bison flex zlib1g-dev libglew1.6-dev dos2unix clang-3.3 cmake
-
-# For Linux Native Dialogs
-RUN apt-get install -y libgtk-3-dev
-
-# Required to extract steamworks SDK
-RUN apt-get install -y unzip
+RUN cd /etc/yum.repos.d && \
+  wget https://copr.fedoraproject.org/coprs/jknife/ue4deps/repo/epel-7/jknife-ue4deps-epel-7.repo \
+  && yum install -y mono-core mono-devel clang ; yum clean all
 
 ADD build.sh /root/build.sh
 
+ENV BUILD Editor
+
 ENV HOME /root
 
-CMD    ["bash", "/root/build.sh"]
+CMD ["bash", "/root/build.sh"]
