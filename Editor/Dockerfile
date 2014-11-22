@@ -12,9 +12,9 @@ RUN yum update -y
 RUN yum install -y autoconf git curl bison flex dos2unix cmake unzip \
     redhat-lsb-core wget ; yum clean all
 
-RUN cd /etc/yum.repos.d && \
-  wget https://copr.fedoraproject.org/coprs/jknife/ue4deps/repo/epel-7/jknife-ue4deps-epel-7.repo \
-  && yum install -y mono-core mono-devel clang ; yum clean all
+RUN cd /etc/yum.repos.d && wget https://copr.fedoraproject.org/coprs/jknife/ue4deps/repo/epel-7/jknife-ue4deps-epel-7.repo
+
+RUN yum install -y mono-core mono-devel clang ; yum clean all
 
 ADD build.sh /root/build.sh
 
