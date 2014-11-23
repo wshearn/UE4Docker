@@ -10,7 +10,8 @@ RUN yum update -y
 
 # Needed Deps
 RUN yum install -y autoconf git curl bison flex dos2unix cmake unzip gcc wget \
-    redhat-lsb-core gtk3-devel gtk2-devel qt-devel ; yum clean all
+    redhat-lsb-core gtk3-devel gtk2-devel qt-devel libstdc++-devel ; \
+    yum clean all
 
 RUN cd /etc/yum.repos.d && wget https://copr.fedoraproject.org/coprs/jknife/ue4deps/repo/epel-7/jknife-ue4deps-epel-7.repo
 
