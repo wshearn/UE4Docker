@@ -6,6 +6,9 @@ UEPATH=/root/UnrealEngine
 cd $UEPATH
 
 PrepWork() {
+    # This is because we are using mono 3.10
+    find Engine/Source/Programs/AutomationTool -name "*Automation.csproj" -exec sed -i "s/ToolsVersion=\"11.0\"/ToolsVersion=\"4.0\"/g" "{}" \;
+
     bash ./GenerateProjectFiles.sh
 }
 
@@ -48,4 +51,4 @@ fi
 
 # Get the UID:GID from GenerateProjectFiles.sh and reset all the permissions to match
 # Otherwise we get a segfault due to the editor not being able to access Saved or Intermediate
-chown -R $(ls -l GenerateProjectFiles.sh  | awk '{ print $3":"$4 }') *
+chown -R $(ls -l GenerateProjectFiles.sh  | awk '{ print $3":"$4 }') * $HOME/Downloads
