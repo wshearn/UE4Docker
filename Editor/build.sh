@@ -9,6 +9,9 @@ PrepWork() {
     # This is because we are using mono 3.10
     find Engine/Source/Programs/AutomationTool -name "*Automation.csproj" -exec sed -i "s/ToolsVersion=\"11.0\"/ToolsVersion=\"4.0\"/g" "{}" \;
 
+    if [ ! -f Engine/Build/OneTimeSetupPerformed ]; then
+        bash ./Setup.sh
+    fi
     bash ./GenerateProjectFiles.sh
 }
 

@@ -5,6 +5,7 @@ UEPATH=/root/UnrealEngine
 cd $UEPATH
 
 PrepWork() {
+    bash ./Setup.sh
     bash ./GenerateProjectFiles.sh
 }
 
