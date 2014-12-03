@@ -20,12 +20,12 @@ Prep:
 To Build UnrealEngine:
 
  - docker pull wshearn/ue4editor
- - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine --rm -ti wshearn/ue4editor
+ - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -ti --rm wshearn/ue4editor
  - NOTE for each build of a different version you will have to pass -ti to it, this is so you can confirm the "destructive" changes.
 
 You can build the Editor in debug mode like so:
 
- - docker run -e "MAKE=UE4Editor-Linux-Debug" -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine --rm -ti wshearn/ue4editor
+ - docker run -e "MAKE=UE4Editor-Linux-Debug" -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -ti --rm wshearn/ue4editor
 
 Or if you want you can build slate viewer by changing out MAKE=UE4Editor-Linux-Debug with MAKE=SlateViewer
 
