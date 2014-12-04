@@ -12,23 +12,22 @@ How to run:
 Prep:
 
  - Install Docker ([ArchLinux], [Fedora], [Ubuntu])
- - mkdir -p $HOME/Projects/UnrealEngine/Deps
- - cd $HOME/Projects/UnrealEngine
- - git clone git@github.com:EpicGames/UnrealEngine.git Source
+ - mkdir $HOME/Projects/ ; cd $HOME/Projects/
+ - git clone git@github.com:EpicGames/UnrealEngine.git
 
 To Build UnrealEngine:
 
  - docker pull wshearn/ue4editor
- - docker run -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -ti --rm wshearn/ue4editor
+ - docker run -v $HOME/Projects/UnrealEngine:/root/UnrealEngine -ti --rm wshearn/ue4editor
  - NOTE for each build of a different version you will have to pass -ti to it, this is so you can confirm the "destructive" changes.
 
 You can build the Editor in debug mode like so:
 
- - docker run -e "MAKE=UE4Editor-Linux-Debug" -v $HOME/Projects/UnrealEngine/Source:/root/UnrealEngine -ti --rm wshearn/ue4editor
+ - docker run -e "MAKE=UE4Editor-Linux-Debug" -v $HOME/Projects/UnrealEngine:/root/UnrealEngine -ti --rm wshearn/ue4editor
 
 Or if you want you can build slate viewer by changing out MAKE=UE4Editor-Linux-Debug with MAKE=SlateViewer
 
-You should see the resulting binaries in $HOME/Projects/UnrealEngine/Source/Engine/Binaries/Linux/
+You should see the resulting binaries in $HOME/Projects/UnrealEngine/Engine/Binaries/Linux/
 
 [copr repo]: https://copr.fedoraproject.org/coprs/jknife/ue4deps/
 [ArchLinux]: https://wiki.archlinux.org/index.php/Docker
