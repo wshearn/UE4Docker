@@ -15,7 +15,6 @@ Prep:
  - mkdir -p $HOME/Projects/UnrealEngine/Deps
  - cd $HOME/Projects/UnrealEngine
  - git clone git@github.com:EpicGames/UnrealEngine.git Source
- - Generate a [GitHub Auth Token] with just repo access
 
 To Build UnrealEngine:
 
@@ -35,4 +34,3 @@ You should see the resulting binaries in $HOME/Projects/UnrealEngine/Source/Engi
 [ArchLinux]: https://wiki.archlinux.org/index.php/Docker
 [Fedora]: http://docs.docker.com/installation/fedora/
 [Ubuntu]: http://docs.docker.com/installation/ubuntulinux/
-[GitHub Auth Token]: https://github.com/settings/tokens/new
