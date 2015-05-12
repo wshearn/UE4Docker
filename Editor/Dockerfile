@@ -1,6 +1,6 @@
 # Unreal Engine 4 Build container
 #
-# VERSION               4.6.0
+# VERSION               4.8.0
 
 FROM      centos:centos7
 MAINTAINER Wesley Hearn <wesley@shearn.me>
